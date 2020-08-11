@@ -81,7 +81,8 @@ class MainActivity : AppCompatActivity(), UserLocationObjectListener, CameraList
     }
 
     override fun onRequestPermissionsResult(
-        requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+        requestCode: Int, permissions: Array<String>, grantResults: IntArray
+    ) {
         when (requestCode) {
             requestPermissionLocation -> {
                 if (grantResults.isNotEmpty() && grantResults[0] == PERMISSION_GRANTED) {
@@ -132,12 +133,20 @@ class MainActivity : AppCompatActivity(), UserLocationObjectListener, CameraList
         }
     }
 
-    override fun onCameraPositionChanged(p0: Map, p1: CameraPosition, p2: CameraUpdateSource, finish: Boolean) {
+    override fun onCameraPositionChanged(
+        p0: Map,
+        p1: CameraPosition,
+        p2: CameraUpdateSource,
+        finish: Boolean
+    ) {
         if (finish) {
             if (followUserLocation) {
                 setAnchor()
             }
-        } else { if (!followUserLocation) { noAnchor() }
+        } else {
+            if (!followUserLocation) {
+                noAnchor()
+            }
         }
     }
 
@@ -155,15 +164,15 @@ class MainActivity : AppCompatActivity(), UserLocationObjectListener, CameraList
     private fun noAnchor() {
         userLocationLayer.resetAnchor()
 
-        user_location_fab.setImageResource(R.drawable.ic_baseline_add_24)
+        user_location_fab.setImageResource(R.drawable.ic_baseline_gps_not_fixed_24)
     }
 
     override fun onObjectAdded(userLocationView: UserLocationView) {
-       setAnchor()
+        setAnchor()
 
-        userLocationView.pin.setIcon(fromResource(this, R.drawable.ic_baseline_add_24))
-        userLocationView.arrow.setIcon(fromResource(this, R.drawable.ic_baseline_gps))
-        userLocationView.accuracyCircle.fillColor = GRAY
+        // userLocationView.pin.setIcon(fromResource(this, R.drawable.ic_baseline_add_24))
+        //  userLocationView.arrow.setIcon(fromResource(this, R.drawable.ic_baseline_gps))
+        //  userLocationView.accuracyCircle.fillColor = GRAY
     }
 
     override fun onObjectUpdated(p0: UserLocationView, p1: ObjectEvent) {}
