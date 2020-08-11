@@ -6,6 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.yandex.mapkit.Animation
 import com.yandex.mapkit.MapKitFactory
 import com.yandex.mapkit.geometry.Point
+import com.yandex.mapkit.logo.Alignment
+import com.yandex.mapkit.logo.HorizontalAlignment
+import com.yandex.mapkit.logo.VerticalAlignment
 import com.yandex.mapkit.map.CameraPosition
 import com.yandex.mapkit.map.MapType
 import kotlinx.android.synthetic.main.activity_main.*
@@ -29,6 +32,8 @@ class MainActivity : AppCompatActivity() {
         val map = mapview.map
         map.mapType = MapType.VECTOR_MAP
 
+        // Запрещено скрывать лого яндекса
+        mapview.map.logo.setAlignment(Alignment(HorizontalAlignment.RIGHT, VerticalAlignment.TOP))
 
         try {
             map.setMapStyle(style())
@@ -36,14 +41,11 @@ class MainActivity : AppCompatActivity() {
             Log.e("ABAY", "Failed to read customization style", e);
         }
 
-
-
         mapview.map.move(
             CameraPosition(Point(55.751574, 37.573856), 11.0f, 0.0f, 0.0f),
             Animation(Animation.Type.SMOOTH, 0f), null
         )
     }
-
 
     @Throws(IOException::class)
     private fun readRawResource(name: String): String? {

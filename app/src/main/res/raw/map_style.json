@@ -2,20 +2,14 @@
   {
     "elements": "label.text.fill",
     "stylers": {
-      "zoom": [
-        12,
-        18
-      ],
+      "zoom": [12, 18],
       "color": "#808"
     }
   },
   {
     "elements": "label.icon",
     "stylers": {
-      "zoom": [
-        13,
-        17
-      ],
+      "zoom": [13, 17],
       "saturation": -0.75,
       "scale": 1.5
     }
@@ -23,12 +17,10 @@
   {
     "types": "polyline",
     "stylers": {
-      "zoom": [
-        14,
-        16
-      ],
+      "zoom": [14, 16],
       "hue": "#00F",
       "scale": 2.0
     }
   }
+
 ]
